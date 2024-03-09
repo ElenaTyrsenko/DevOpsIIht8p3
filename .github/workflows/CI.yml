@@ -1,7 +1,8 @@
 name: Continuos Integration
+
 on:
- push:
-     branches:
+  push:
+    branches:
       - main
       - jenk
    pull_request:
@@ -22,23 +23,17 @@ jobs:
          distribution: 'zulu'
      - name: Show Java version
        run: "java -version"
-
      - name: Checkout code
-       uses: actions/checkot@v3
+       uses: actions/checkout@v3
        with:
         ref: jenk
-
       - name: Show directory
         run: 'pwd'
-
       - name: List files
         run: 'ls -al'
-
       - name: Install Dependencies
         run: 'mvn compile'
-
       - name: Build application
         run: 'mvn package -DskipTests'
-
       - name: Test application
         run: 'mvn test'
